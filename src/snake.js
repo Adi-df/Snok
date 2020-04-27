@@ -9,7 +9,8 @@ export default class Snake {
 	constructor(){
 		this.queue = [new Block(1, 0), new Block(0, 0)];
 		this.finder = new PF.BestFirstFinder({
-			allowDiagonal: false
+            allowDiagonal: false,
+            heuristic: PF.Heuristic.euclidean
 		});
         this.growValue = 0;
         this.speed = CONFIG.BASE_SNAKE_SPEED;
