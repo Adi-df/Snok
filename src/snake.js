@@ -39,7 +39,7 @@ export default class Snake {
 		}
 
 		if (this.growValue % ( CONFIG.FRAME_RATE / ( 1000 / CONFIG.SPEED_INCREMENT_RATE ) ) === 0) {
-            this.speed++;
+            this.speed -= CONFIG.SPEED_INCREMENT_FORCE;
             STORE.dispatch({type: "INCREMENT_SCORE"});
 		}
 	}
