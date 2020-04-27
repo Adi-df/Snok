@@ -27,17 +27,17 @@ export default class Snake {
 	update(apple){
 		this.growValue++;
 
-		if (this.growValue % (CONFIG.FRAME_RATE / ( 1000 / 500 )) === 0) {
+		if (this.growValue % (CONFIG.FRAME_RATE / ( 1000 / 200 )) === 0) {
 			let head = this.queue[0];
 			let newHead = this.finder.findPath(head.x, head.y, apple.position.x, apple.position.y, this.generateGrid())[1];
 			this.queue.unshift(new Block(newHead[0], newHead[1]));
 		}
 
-		if (this.growValue % ( CONFIG.FRAME_RATE / ( 1000 / 500 ) ) === 0 && this.growValue % ( CONFIG.FRAME_RATE / ( 1000 / 1500 ) ) !== 0){
+		if (this.growValue % ( CONFIG.FRAME_RATE / ( 1000 / 200 ) ) === 0 && this.growValue % ( CONFIG.FRAME_RATE / ( 1000 / 1500 ) ) !== 0){
 			this.queue.pop();
 		}
 
-		if (this.growValue % ( CONFIG.FRAME_RATE / ( 1000 / 1500 ) ) === 0) {
+		if (this.growValue % ( CONFIG.FRAME_RATE / ( 1000 / 10000 ) ) === 0) {
 			STORE.dispatch({type: "INCREMENT_SCORE"});
 		}
 	}
