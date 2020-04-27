@@ -37,7 +37,6 @@ function loop(){
 }
 
 (async function main(){
-	await title();
 	await start();
 	STORE.dispatch({type: "START"});
 	loop();
