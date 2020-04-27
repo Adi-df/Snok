@@ -3,7 +3,7 @@ The revenge of the apple against the snake!
 
 The apple have a blast to be eat by the evil Snake. Who only think about growing. That's the revolution!
 [Help](https://adi-df.github.io/Snok/) the apple now !!!
-(The game is really really simple...)
+**Yes ...** That's a remake of **Snake**
 
 
 Made with :
