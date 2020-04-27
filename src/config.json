@@ -7,5 +7,8 @@
         "x": 30,
         "y": 30
     },
-    "FRAME_RATE": 60
+    "FRAME_RATE": 60,
+    "BASE_SNAKE_SPEED": 500,
+    "SPEED_INCREMENT_RATE": 5000,
+    "GROWING_RATE": 1500
 }

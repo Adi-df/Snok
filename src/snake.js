@@ -11,7 +11,8 @@ export default class Snake {
 		this.finder = new PF.BestFirstFinder({
 			allowDiagonal: false
 		});
-		this.growValue = 0;
+        this.growValue = 0;
+        this.speed = CONFIG.BASE_SNAKE_SPEED;
 	}
 
 	generateGrid(){
@@ -27,17 +28,17 @@ export default class Snake {
 	update(apple){
 		this.growValue++;
 
-		if (this.growValue % (CONFIG.FRAME_RATE / ( 1000 / 200 )) === 0) {
+		if (this.growValue % (CONFIG.FRAME_RATE / ( 1000 / this.speed )) === 0) {
 			let head = this.queue[0];
 			let newHead = this.finder.findPath(head.x, head.y, apple.position.x, apple.position.y, this.generateGrid())[1];
 			this.queue.unshift(new Block(newHead[0], newHead[1]));
 		}
 
-		if (this.growValue % ( CONFIG.FRAME_RATE / ( 1000 / 200 ) ) === 0 && this.growValue % ( CONFIG.FRAME_RATE / ( 1000 / 1500 ) ) !== 0){
+		if (this.growValue % ( CONFIG.FRAME_RATE / ( 1000 / this.speed ) ) === 0 && this.growValue % ( CONFIG.FRAME_RATE / ( 1000 / CONFIG.GROWING_RATE ) ) !== 0){
 			this.queue.pop();
 		}
 
-		if (this.growValue % ( CONFIG.FRAME_RATE / ( 1000 / 10000 ) ) === 0) {
+		if (this.growValue % ( CONFIG.FRAME_RATE / ( 1000 / CONFIG.SPEED_INCREMENT_RATE ) ) === 0) {
 			STORE.dispatch({type: "INCREMENT_SCORE"});
 		}
 	}
